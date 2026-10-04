@@ -13,10 +13,6 @@ THRUST = 0.15
 DRAG = 0.99
 MAX_SPEED = 6
 
-asteroid_image = pygame.image.load("Verity.png").convert_alpha()
-
-
-asteroid_image = pygame.transform.scale(asteroid_image,(50, 50))
 
 class Asteroid:
 
@@ -28,7 +24,6 @@ class Asteroid:
         self.radius = random.randint(10, 15)
         self.position = pygame.math.Vector2(self.x, self.y)
         self.velocity = pygame.math.Vector2(self.dx, self.dy)
-        self.image = pygame.transform.scale(asteroid_image,( self.radius,  self.radius))
    
     def move(self):
         self.position += self.velocity
@@ -49,7 +44,7 @@ class Asteroid:
             self.position.y = LEN
    
     def draw(self):
-            screen.blit(self.image, self.position)
+            pygame.draw.circle(screen, "gray", self.position, self.radius)
 
 
     def checkCollision(self, other):
